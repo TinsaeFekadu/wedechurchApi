@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use JWTAuth;
 
 class UsersController extends Controller
 {
     public function index()
     {
-        return User::all();
+        $token = JWTAuth::getToken();
+
+        $user = JWTAuth::toUser($token);
+
+        return $user;
+        //return User::all();
     }
 
     public function show($id)

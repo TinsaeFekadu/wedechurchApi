@@ -65,7 +65,29 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+       //     'api_token' => str_random(60),
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+
+
+    public function register(Request $request)
+ {
+      $this->validator($request->all())->validate();
+
+      event(new Registered($user = $this->create($request->all())));
+
+      $this->guard()->login($user);
+
+      return $this->registered($request, $user)
+          ?: redirect($this->redirectPath());
+ }
+
+    protected function registered(Request $request, $user)
+    {
+        $user->generateToken();
+
+        return response()->json(['data' => $user->toArray()], 201);
     }
 }
