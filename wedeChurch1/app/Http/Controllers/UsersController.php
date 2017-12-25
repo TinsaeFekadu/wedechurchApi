@@ -10,12 +10,12 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $token = JWTAuth::getToken();
+ /*       $token = JWTAuth::getToken();
 
         $user = JWTAuth::toUser($token);
 
-        return $user;
-        //return User::all();
+        return $user;*/
+        return User::all();
     }
 
     public function show($id)
@@ -32,6 +32,7 @@ class UsersController extends Controller
     public function update($id)
     {
         $user = User::find($id);
+
         $user -> update();
 
       //  return 'updated';

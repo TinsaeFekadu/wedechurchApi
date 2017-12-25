@@ -1,0 +1,13 @@
+.church-image{
+  background-image: url('https://www.saintlouisparish.ca/wp-content/uploads/2015/02/st.louis_.lower_.church-1018x460.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+h1 {
+  color: #F3F7F8;
+  text-align: center;
+  background-color: #D6EAF8;
+}

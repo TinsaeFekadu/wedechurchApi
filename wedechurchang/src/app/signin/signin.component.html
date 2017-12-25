@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSignin(f)" #f="ngForm">
+  <div class="container">
+    <div class="form-group">
+      <div class="login">
+        <h1>SignIn to Admin Page</h1>
+        <p><input type="email" id="email" name="email" ngModel class="form-control" placeholder="Email"></p>
+        <p><input type="password" id="password" name="password" ngModel class="form-control" placeholder="Password"></p>
+        <button type="submit" [disabled]="!f.valid" class="btn-btn-primary">Sign in</button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,28 @@
+.btn{
+  color:white;
+  background-color: green;
+
+}
+.btn-delete{
+  color:white;
+  background-color: red;
+}
+.thead{
+  font-size:40px;
+  margin: 61px;
+}
+.row{
+  position: center;
+}
+.container-1 {
+  position: fixed;
+  bottom: 0px;
+  right: 16px;
+  font-size: 18px;
+}
+.container-2{
+  position: fixed;
+  bottom: 1px;
+  left: 16px;
+  font-size: 18px;
+}
