@@ -1,4 +1,5 @@
 /*
+
 import { User } from './user';
 
 export const USER: User[] = [
@@ -17,4 +18,5 @@ export const USER: User[] = [
   { id: 19, name: 'Magma' },
   { id: 20, name: 'Tornado' }
 ];
+
 */

@@ -15,7 +15,43 @@ use App\User;
 */
 
 
+//Route::group(['middleware' => 'jwt.auth'], function () {
+Route::get('churchs', 'ChurchsController@index');
+Route::get('churchs/{id}', 'ChurchsController@show');
+Route::post('churchs', 'ChurchsController@store');
+Route::post('churchs/{id}/update', 'ChurchsController@update');
+Route::post('churchs/{id}/delete', 'ChurchsController@delete');
+Route::post('churchs/validate/{id}', 'ChurchsController@validater');
+//});
 
+//Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::get('users', 'UsersController@index');
+    Route::get('users/{id}', 'UsersController@show');
+    Route::post('users', 'UsersController@store');
+    Route::post('users/{id}/update', 'UsersController@update');
+    Route::post('users/{id}/delete', 'UsersController@delete');
+    Route::post('users/validate/{id}', 'UsersController@validater');
+//});
+
+
+Route::post('/login', ['uses' => 'ApiAuthController@login']);
+Route::post('/register', ['uses' => 'ApiAuthController@register']);
+
+
+
+Route::group(['middleware' => 'validate_user'], function () {
+        Route::get('usersList', 'UsersController@index');
+        Route::get('usersList/{id}', 'UsersController@show');
+        Route::post('usersList', 'UsersController@store');
+        Route::post('usersList/{id}/update', 'UsersController@update');
+        Route::post('usersList/{id}/delete', 'UsersController@delete');
+
+});
+
+
+Route::get('/here', function() {
+    return View::make('index');
+});
 /*
 
 Route::get('/churchs', function()
@@ -55,22 +91,6 @@ Route::post('churchs/{id}/delete',function($id)
 });
 */
 
-Route::get('churchs', 'ChurchsController@index') ;//->middleware('jwt.auth');
-Route::get('churchs/{id}', 'ChurchsController@show') ;//->middleware('jwt.auth');
-Route::post('churchs', 'ChurchsController@store') ;//->middleware('jwt.auth');
-Route::post('churchs/{id}/update', 'ChurchsController@update');// ->middleware('jwt.auth');
-Route::post('churchs/{id}/delete', 'ChurchsController@delete');//->middleware('jwt.auth');
-
-
-Route::get('users', 'UsersController@index') ;//->middleware('jwt.auth');
-Route::get('users/{id}', 'UsersController@show') ;//->middleware('jwt.auth');
-Route::post('users', 'UsersController@store') ;//->middleware('jwt.auth');
-Route::post('users/{id}/update', 'UsersController@update');// ->middleware('jwt.auth');
-Route::post('users/{id}/delete', 'UsersController@delete') ;//->middleware('jwt.auth');
-
-
-Route::post('/login', ['uses' => 'ApiAuthController@login']);
-Route::post('/register', ['uses' => 'ApiAuthController@register']);
 
 /*Route::get('users', ['middleware' => 'cors', function()
 {
@@ -85,6 +105,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 */
+
 /*
 Route::get('/users', function()
 {
@@ -94,6 +115,3 @@ Route::get('/users', function()
 
 */
 
-Route::get('/here', function() {
-    return View::make('index');
-});

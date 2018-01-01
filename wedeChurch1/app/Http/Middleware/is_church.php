@@ -26,7 +26,7 @@ class Is_Church
                     $churchList = Church::where('church_id','=',$church->id)->first();
 
                     if($churchList instanceof Church){
-                        if($churchList->userRole->id <= 2 ){
+                        if($churchList->status == true ){
                                 return $next($request);
                             }
 

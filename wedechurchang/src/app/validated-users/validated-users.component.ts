@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {Users} from "../users-list/UserMapper";
+import {UsersListService} from "../services/users-list.service";
 
 @Component({
   selector: 'app-validated-users',
@@ -8,11 +10,22 @@ import {Router} from '@angular/router';
 })
 export class ValidatedUsersComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  public user: Users[];
+
+
+  constructor(private usersService: UsersListService, private router: Router ) { }
 
   ngOnInit() {
+
+    this.usersService.getUsers();
+    this.usersService.UserEmmiter.subscribe(
+      data => {
+        this.user = data
+      }
+    );
+   // this.UpdatePage();
   }
-  public signout() {
+  public signout(){
     localStorage.removeItem('wedechurchTok');
     this.router.navigate(['signin']);
   }

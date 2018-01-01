@@ -39,7 +39,14 @@ class ChurchsController extends Controller
     {
         Church::find($id)->delete();
 
-        return ('Successfully Deleted!!');
+        return response() -> json(['Church deleted!']);
+    }
+
+    public function validater($id){
+        $user = Church::find($id);
+        $user -> status = true;
+        $status = $user -> update();
+        return response() -> json(['Church updated' => $status], 201);
     }
 
 }

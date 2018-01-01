@@ -8,7 +8,6 @@ import {HttpHeaders} from "@angular/common/http";
 @Injectable()
 export class UsersListService {
 
- // public id = this.id;
 
 public UserEmmiter = new EventEmitter<any>();
 
@@ -29,10 +28,15 @@ public getToken(){
 
   public deleteUsers(id: number) {
     const url = 'http://localhost:8000/api/users/'+id+'/delete';
-    return this.httpClient.post(url,{}, { headers: new HttpHeaders({'X-Requested-With': 'XMLHttpRequest' }) });
+    return this.httpClient.post(url,{},
+      { headers: new HttpHeaders({'X-Requested-With': 'XMLHttpRequest' }) });
 }
-//
 
+  public validateUser(id: number){
+  const url = 'http://localhost:8000/api/users/validate/'+id;
+  return this.httpClient.post(url,{},
+    { headers: new HttpHeaders({'X-Requested-With': 'XMLHttpRequest'  }) });
+  }
 
 
 /*

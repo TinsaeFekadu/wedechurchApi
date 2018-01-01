@@ -1,6 +1,11 @@
-.btn{
+.btn-1{
   color:white;
-  background-color: green;
+  background-color: lightseagreen;
+
+}
+.btn-2{
+  color:white;
+  background-color: darkgreen;
 
 }
 .btn-delete{

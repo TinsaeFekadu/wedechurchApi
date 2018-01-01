@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Church extends Model
 {
     protected $fillable = [
-        'name', 'address'
+        'name', 'address','status'
     ];
 }

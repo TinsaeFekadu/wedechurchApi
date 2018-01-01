@@ -46,8 +46,9 @@
         <td>{{i.name}}</td>
         <td>{{i.address}}</td>
         <td>
-          <button class ="btn">Validate</button>
-          <button class ="btn-delete">Delete</button>
+          <button *ngIf="i.status == 0" class ="btn-1" (click)="onValidate(i)">Validate</button>
+          <button *ngIf="i.status == 1" class ="btn-2" >Validated</button>
+          <button class ="btn-delete" (click)= "onDelete(i)">Delete</button>
         </td>
       </tr>
       </tbody>

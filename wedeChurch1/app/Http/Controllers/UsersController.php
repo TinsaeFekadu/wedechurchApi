@@ -44,6 +44,14 @@ class UsersController extends Controller
        $user = User::find($id);
         $user -> delete();
 
-        return 'Deleted!';
+        return response() -> json(['Deleted!'], 201);
+    }
+
+
+    public function validater($id){
+        $user = User::find($id);
+        $user -> status = true;
+        $status = $user -> update();
+       return response() -> json(['user updated' => $status], 201);
     }
 }

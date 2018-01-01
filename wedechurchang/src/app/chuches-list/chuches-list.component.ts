@@ -19,13 +19,34 @@ export class ChuchesListComponent implements OnInit {
   ngOnInit() {
     this.churchsService.getChurch();
     this.churchsService.ChurchEmmiter.subscribe(
-      data => {this.church = data}
-    )
+      data => {
+        this.church = data
+      }
+    );
+    this.UpdatePage();
   }
+
   public signout() {
     localStorage.removeItem('wedechurchTok');
     this.router.navigate(['signin']);
   }
 
+  public onDelete(del_church: Churchs) {
+    this.churchsService.deleteChurch(del_church.id)
+      .subscribe(
+        () => { this.UpdatePage() }
+      );
+  }
+
+  public onValidate(val_church: Churchs) {
+    this.churchsService.validateChurch(val_church.id)
+      .subscribe(
+        () => { this.UpdatePage() }
+      );
+  }
+
+  public UpdatePage(){
+    this.churchsService.getChurch();
+  }
 }
 
